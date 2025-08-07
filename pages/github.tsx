@@ -80,14 +80,52 @@ const GithubPage = ({ repos, user }: GithubPageProps) => {
 };
 
 export async function getStaticProps() {
+  // Validate required environment variables
+  const githubApiKey = process.env.GITHUB_API_KEY;
+  const githubUsername = process.env.NEXT_PUBLIC_GITHUB_USERNAME;
+
+  if (!githubApiKey) {
+    console.error('GITHUB_API_KEY environment variable is not set');
+    return {
+      props: {
+        title: 'GitHub',
+        repos: [],
+        user: {
+          login: 'GitHub Username Not Configured',
+          avatar_url: '',
+          public_repos: 0,
+          followers: 0
+        }
+      },
+      revalidate: 300,
+    };
+  }
+
+  if (!githubUsername) {
+    console.error('NEXT_PUBLIC_GITHUB_USERNAME environment variable is not set');
+    return {
+      props: {
+        title: 'GitHub',
+        repos: [],
+        user: {
+          login: 'GitHub Username Not Configured',
+          avatar_url: '',
+          public_repos: 0,
+          followers: 0
+        }
+      },
+      revalidate: 300,
+    };
+  }
+
   const headers = {
-    'Authorization': `token ${process.env.GITHUB_API_KEY}`,
+    'Authorization': `token ${githubApiKey}`,
     'Accept': 'application/vnd.github.v3+json',
   };
 
   try {
     const userRes = await fetch(
-      `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+      `https://api.github.com/users/${githubUsername}`,
       { headers }
     );
 
@@ -98,7 +136,7 @@ export async function getStaticProps() {
     const user = await userRes.json();
 
     const repoRes = await fetch(
-      `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?sort=updated&per_page=6&type=public`,
+      `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6&type=public`,
       { headers }
     );
 
@@ -128,7 +166,7 @@ export async function getStaticProps() {
         title: 'GitHub',
         repos: [],
         user: {
-          login: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
+          login: githubUsername || 'GitHub Username Not Configured',
           avatar_url: '',
           public_repos: 0,
           followers: 0
