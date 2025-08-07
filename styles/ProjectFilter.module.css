@@ -1,0 +1,105 @@
+.filterContainer {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--article-bg);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filterTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.filterTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filterTag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filterTag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.filterTag.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+.filterTag.active:hover {
+  background: var(--accent-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.count {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.filterTag.active .count {
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .filterContainer {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filterTitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .filterTags {
+    gap: 0.5rem;
+  }
+
+  .filterTag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .count {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .filterTags {
+    justify-content: center;
+  }
+
+  .filterTag {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+  }
+}
