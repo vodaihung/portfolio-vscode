@@ -29,7 +29,7 @@ const ContactPage = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '', projectType: 'fixed' });
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -148,7 +148,7 @@ const ContactPage = () => {
 
           {submitStatus === 'success' && (
             <div className={styles.successMessage}>
-              ✅ Message sent successfully! I'll get back to you soon.
+              ✅ Message sent successfully! I&apos;ll get back to you soon.
             </div>
           )}
 

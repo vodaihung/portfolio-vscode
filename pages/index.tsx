@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import {
   VscArrowRight,
@@ -28,7 +28,7 @@ export default function HomePage() {
   const codeEditorRef = useRef<HTMLDivElement>(null);
 
   // Complex, senior-level code demonstration
-  const codeLines = [
+  const codeLines = useMemo(() => [
     { code: '// Enterprise-grade TypeScript with advanced patterns', type: 'comment' },
     { code: 'interface DeveloperProfile {', type: 'interface' },
     { code: '  readonly id: string;', type: 'property' },
@@ -169,7 +169,7 @@ export default function HomePage() {
     { code: '};', type: 'close-function' },
     { code: '', type: 'blank' },
     { code: 'export default HomePage;', type: 'function-call' },
-  ];
+  ], []);
 
   useEffect(() => {
     const interval = setInterval(() => {
