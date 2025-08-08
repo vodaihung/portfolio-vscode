@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    let { messages, model } = req.body as {
+    const { messages, model: inputModel } = req.body as {
       messages: { role: 'system' | 'user' | 'assistant'; content: string }[];
       model?: string;
     };
@@ -25,9 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Normalize/whitelist model names from UI to valid OpenAI models
     const allowedModels = new Set(['gpt-4o-mini', 'gpt-4o', 'o3-mini']);
-    if (!model || !allowedModels.has(model)) {
-      model = 'gpt-4o-mini';
-    }
+    const resolvedModel = inputModel && allowedModels.has(inputModel) ? inputModel : 'gpt-4o-mini';
 
     const sanitizedMessages = messages.map((m) => ({
       role: m.role === 'assistant' || m.role === 'system' ? m.role : 'user',
@@ -41,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model,
+        model: resolvedModel,
         messages: [
           { role: 'system', content: 'You are a concise, helpful coding assistant. Always structure answers using Markdown: short headings (##), bullet lists, and fenced code blocks with appropriate languages. Keep paragraphs short and scannable.' },
           ...sanitizedMessages,
