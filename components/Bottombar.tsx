@@ -13,15 +13,10 @@ const Bottombar = () => {
   return (
     <footer className={styles.bottomBar}>
       <div className={styles.container}>
-        <a
-          href="https://github.com/itsnitinr/vscode-portfolio"
-          target="_blank"
-          rel="noreferrer noopener"
-          className={styles.section}
-        >
+        <div className={styles.section}>
           <VscSourceControl className={styles.icon} />
-          <p>main</p>
-        </a>
+          <p>cursor</p>
+        </div>
         <div className={styles.section}>
           <VscError className={styles.icon} />
           <p className={styles.errorText}>0</p>&nbsp;&nbsp;

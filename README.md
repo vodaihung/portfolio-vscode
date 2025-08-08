@@ -19,7 +19,13 @@ For other features and themes suggestions, please open an issue.
 
 ## Environment Variables
 
-For fetching your articles from dev.to, create an `.env.local` file inside the project directory. Check the `.env.local.example` file for more information.
+Create an `.env.local` file inside the project directory and add:
+
+```
+OPENAI_API_KEY=sk-...
+```
+
+Do not commit secrets. The API key is used by the chat sidebar via the `/api/chat` route.
 
 ## Running Development Server
 

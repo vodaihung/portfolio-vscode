@@ -6,8 +6,8 @@ const Titlebar = () => {
   return (
     <section className={styles.titlebar}>
       <Image
-        src="/logos/vscode_icon.svg"
-        alt="VSCode Icon"
+        src="/logos/cursor.png"
+        alt="Cursor Icon"
         height={15}
         width={15}
         className={styles.icon}
@@ -21,7 +21,7 @@ const Titlebar = () => {
         <p>Terminal</p>
         <p>Help</p>
       </div>
-      <p className={styles.title}>Hung Vo - Visual Studio Code</p>
+      <p className={styles.title}>Hung Vo - Cursor</p>
       <div className={styles.windowButtons}>
         <span className={styles.minimize}></span>
         <span className={styles.maximize}></span>

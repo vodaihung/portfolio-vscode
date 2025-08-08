@@ -1,0 +1,299 @@
+.chatSidebar {
+  background: var(--explorer-bg);
+  width: clamp(300px, 28vw, 420px);
+  min-width: 280px;
+  border-left: 1px solid var(--explorer-border);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 30px - 25px);
+}
+
+.header {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  color: rgb(225, 228, 232);
+  border-bottom: 1px solid var(--explorer-border);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.brandIcon {
+  color: var(--accent-color);
+}
+
+.clearButton {
+  background: transparent;
+  border: none;
+  color: rgb(106, 115, 125);
+  cursor: pointer;
+}
+
+.headerActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerIconBtn {
+  background: transparent;
+  border: none;
+  color: rgb(160, 168, 180);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.headerIconBtn:hover { background: var(--sidebar-hover-bg); }
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px;
+}
+
+.loadingDots {
+  display: inline-block;
+  min-width: 24px;
+}
+
+.loadingDots span {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 2px;
+  background: rgba(180, 190, 200, 0.9);
+  border-radius: 50%;
+  animation: chatDots 1.4s infinite ease-in-out both;
+}
+
+.loadingDots span:nth-child(1) { animation-delay: -0.32s; }
+.loadingDots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes chatDots {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.6; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.emptyState {
+  color: rgb(150, 155, 165);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.tip {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: rgb(130, 135, 145);
+}
+
+.message {
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  line-height: 1.35rem;
+}
+
+.assistant {
+  background: rgba(100, 140, 255, 0.08);
+  border: 1px solid rgba(100, 140, 255, 0.15);
+}
+
+.markdown {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.markdown h1, .markdown h2, .markdown h3 {
+  margin: 0.4rem 0 0.2rem;
+}
+.markdown ul { padding-left: 1.2rem; }
+.markdown code {
+  background: rgba(99, 156, 255, 0.12);
+  border: 1px solid rgba(99, 156, 255, 0.2);
+  border-radius: 6px;
+  padding: 0 4px;
+}
+.markdown pre code {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.user {
+  background: rgba(120, 120, 120, 0.15);
+  border: 1px solid rgba(120, 120, 120, 0.25);
+}
+
+/* Cursor-like composer */
+.composer {
+  padding: 14px 14px 16px;
+  border-top: 1px solid var(--explorer-border);
+}
+
+.chipsRow {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.chip {
+  background: #0f1931;
+  border: 1px dashed rgba(99, 156, 255, 0.45);
+  color: rgb(190, 198, 210);
+  font-size: 0.8rem;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.composerBox {
+  background: var(--main-bg);
+  border: 1px solid rgba(99, 156, 255, 0.25);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(99, 156, 255, 0.08);
+}
+
+.textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  resize: none;
+  padding: 10px 10px 10px;
+  font-family: inherit;
+  line-height: 1.15rem;
+  font-size: 0.9rem;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.composerFooter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+/* Mode dropdown chip */
+.modeWrapper { position: relative; }
+.chipButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f1931;
+  border: 1px solid rgba(99, 156, 255, 0.35);
+  color: rgb(225, 228, 232);
+  border-radius: 9999px;
+  padding: 0 10px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.modeIcon { font-weight: 700; }
+.modeLabel { font-weight: 600; }
+.modeShortcut { color: rgb(130, 135, 145); font-size: 0.85rem; }
+.modeShortcut { font-size: 0.8rem; }
+.caret { opacity: 0.8; }
+
+.modeMenu {
+  position: absolute;
+  bottom: 38px;
+  left: 0;
+  background: #0b1226;
+  border: 1px solid rgba(99, 156, 255, 0.35);
+  border-radius: 12px;
+  padding: 4px;
+  width: max-content;
+  min-width: 160px;
+  max-width: 200px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  z-index: 5;
+}
+.modeMenuItem {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: rgb(210, 215, 225);
+  display: grid;
+  grid-template-columns: 20px 1fr 20px auto;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modeMenuItem:hover { background: rgba(99, 156, 255, 0.08); }
+.menuIcon { display: inline-flex; justify-content: center; }
+.menuText { font-weight: 600; }
+.menuCheck { justify-self: end; opacity: 0.9; }
+.menuShortcut { color: rgb(130, 135, 145); }
+
+/* Model chip mimicking Cursor */
+.modelChip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f1931;
+  border: 1px solid rgba(99, 156, 255, 0.35);
+  color: rgb(225, 228, 232);
+  border-radius: 9999px;
+  padding: 0 10px;
+  height: 30px;
+  font-size: 0.85rem;
+}
+.modelNativeSelect {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.footerRight { margin-left: auto; display: inline-flex; gap: 10px; }
+
+.iconButton {
+  background: transparent;
+  color: rgb(180, 190, 200);
+  border: 1px solid rgba(99, 156, 255, 0.25);
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.sendIconButton {
+  background: #5b8cff;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .chatSidebar { width: clamp(280px, 32vw, 340px); }
+}
+
+@media screen and (max-width: 900px) {
+  .chatSidebar { display: none; }
+}
+
+

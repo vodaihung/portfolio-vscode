@@ -38,7 +38,7 @@ const Explorer = () => {
 
   return (
     <div className={styles.explorer}>
-      <p className={styles.title}>Explorer</p>
+      <p className={styles.title}>Workspace</p>
       <div>
         <input
           type="checkbox"
@@ -52,7 +52,7 @@ const Explorer = () => {
             className={styles.chevron}
             style={portfolioOpen ? { transform: 'rotate(90deg)' } : {}}
           />
-          Portfolio
+          Workspace
         </label>
         <div
           className={styles.files}

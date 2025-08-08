@@ -29,9 +29,19 @@
   margin-right: 0.5rem;
   height: 24px;
   align-items: center;
-  padding: 0 0.2rem;
+  padding: 0 0.35rem;
   cursor: pointer;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.section p {
+  display: inline-block;
+  transition: transform 0.15s ease;
+  transform-origin: left center;
+}
+
+.section:hover p {
+  transform: scale(1.05);
 }
 
 .section:hover {

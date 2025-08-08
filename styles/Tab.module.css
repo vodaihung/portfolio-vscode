@@ -1,21 +1,29 @@
 .tab {
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1rem;
   background: var(--tab-bg);
-  color: #ececec;
+  color: #e8ecf1;
   display: flex;
   align-items: center;
   border: 1px solid var(--tab-border);
+  border-bottom: 2px solid transparent;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .tab p {
   margin-left: 5px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+  transform-origin: left center;
 }
 
 .active {
-  border-top: 1px solid var(--accent-color);
   background: var(--tab-active-bg);
-  border-bottom: none;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.tab:hover p {
+  transform: scale(1.05);
 }
